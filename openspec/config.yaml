@@ -1,0 +1,52 @@
+schema: qa-testing
+githubCopilot:
+  cloudAgent: false
+
+context: |
+  Tech stack: C#, .NET, and Microsoft Playwright for .NET.
+  This project contains automated end-to-end tests for web applications.
+  Prefer Playwright locators, explicit assertions, and test isolation.
+  Tests must be deterministic and avoid fixed delays where Playwright auto-waiting or condition-based waits are available.
+  Use existing project conventions for the test framework, fixtures, and browser lifecycle management.
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+rules:
+  proposal:
+    - Define the user-facing quality risk, affected browsers or workflows, and test scope.
+    - State what is out of scope, including environments or browser coverage not being added.
+  spec:
+    - Write acceptance scenarios in observable Given/When/Then form.
+    - Include positive, negative, and boundary cases where they are relevant.
+    - Define stable, user-visible assertions rather than implementation details.
+  test-strategy:
+    - Identify coverage by browser, viewport, environment, and test data requirements.
+    - Describe test isolation, cleanup, and the approach for external dependencies.
+    - Classify tests as smoke, regression, or end-to-end and state their execution trigger.
+  tasks:
+    - Include implementation, test automation, and verification steps.
+    - Keep Playwright tests independent and suitable for parallel execution.
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+operations:
+  apply:
+    guidance:
+      - Run the narrowest relevant automated test after each test or test-support change.
+      - Verify locators target accessible roles, labels, or stable test identifiers before using CSS or XPath selectors.
+      - Capture Playwright traces, screenshots, or videos for failures when the project configuration supports them.
+      - Report executed tests, browser coverage, results, and any unverified risks.
+  archive:
+    guidance:
+      - Confirm required acceptance scenarios have automated coverage or document why they do not.
+      - Summarize passing validation, known test limitations, and follow-up QA work.
